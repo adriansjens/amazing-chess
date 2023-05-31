@@ -4,6 +4,6 @@
     {
         public void RenderMenu();
         public string GetMenuChoiceFromUser();
-        public void ExitGame();
+        public void ExitApplication();
     }
 }

@@ -59,5 +59,21 @@ namespace AmazingChessTest
             //Assert
             mockConsoleInterface.Verify(mockInterface => mockInterface.WriteLine("0" + ConsoleChessGameMenuResponses.WrongOptionMessage));
         }
+
+        [Test]
+        public void ExitApplication_RendersCorrectOutput()
+        {
+            //Arrange
+            var mockConsoleInterface = new Mock<IConsoleInterface>();
+            var gameInterface = new ConsoleChessGameInterface(mockConsoleInterface.Object);
+
+            var correctExitMessage = "Bye!";
+
+            //Act
+            gameInterface.ExitApplication();
+
+            //Assert
+            mockConsoleInterface.Verify(mockInterface => mockInterface.WriteLine(correctExitMessage));
+        }
     }
 }

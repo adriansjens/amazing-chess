@@ -36,9 +36,9 @@ namespace AmazingChess.GameMenu
             return userMenuChoice;
         }
 
-        public void ExitGame()
+        public void ExitApplication()
         {
-            throw new NotImplementedException();
+            _consoleInterface.WriteLine(ConsoleChessGameMenuResponses.ExitMessage);
         }
 
         private bool IsValidMenuChoice(string userMenuChoice)
