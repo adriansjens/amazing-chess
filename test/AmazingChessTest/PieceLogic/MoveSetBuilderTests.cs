@@ -19,6 +19,7 @@ namespace AmazingChessTest.ConsoleChessGameInterfaceTests
         {
             //Act
             _builder.BuildDiagonalMoveLimit();
+            _builder.SetTotalMovementRange();
             var moveSet = _builder.GetMoveSet();
 
             //Assert
@@ -30,10 +31,9 @@ namespace AmazingChessTest.ConsoleChessGameInterfaceTests
 
                 //verify that the resulting move limit properties are populated correctly
                 Assert.That(moveSet.DiagonalMoveLimit.BoardDimension, Is.EqualTo(BoardDimension.Diagonal));
-                Assert.That(moveSet.DiagonalMoveLimit.UpperLimit, Is.EqualTo(1));
-                Assert.That(moveSet.DiagonalMoveLimit.LowerLimit, Is.EqualTo(1));
-                Assert.That(moveSet.DiagonalMoveLimit.IncrementalMoveLimit, Is.EqualTo(1));
-                Assert.That(moveSet.DiagonalMoveLimit.DecrementalMoveLimit, Is.EqualTo(0));
+                Assert.That(moveSet.TotalMovementRange, Is.EqualTo(new int[] { 1 }));
+                Assert.That(moveSet.DiagonalMoveLimit.IncrementalMovementRange, Is.EqualTo(new int[] { 1 }));
+                Assert.That(moveSet.DiagonalMoveLimit.DecrementalMovementRange, Is.EqualTo(new int[] { 0 }));
                 Assert.That(moveSet.DiagonalMoveLimit.CanCapture, Is.True);
             });
         }
@@ -43,6 +43,7 @@ namespace AmazingChessTest.ConsoleChessGameInterfaceTests
         {
             //Act
             _builder.BuildHorizontalMoveLimit();
+            _builder.SetTotalMovementRange();
             var moveSet = _builder.GetMoveSet();
 
             //Assert
@@ -54,12 +55,11 @@ namespace AmazingChessTest.ConsoleChessGameInterfaceTests
 
                 //given that a pawn is unable to move horizontally, verify that the default move limit property values are correctly populated
                 Assert.That(moveSet.HorizontalMoveLimit.BoardDimension, Is.EqualTo(BoardDimension.Horizontal));
-                Assert.That(moveSet.HorizontalMoveLimit.UpperLimit, Is.EqualTo(0));
-                Assert.That(moveSet.HorizontalMoveLimit.LowerLimit, Is.EqualTo(0));
-                Assert.That(moveSet.HorizontalMoveLimit.IncrementalMoveLimit, Is.EqualTo(0));
-                Assert.That(moveSet.HorizontalMoveLimit.DecrementalMoveLimit, Is.EqualTo(0));
+                Assert.That(moveSet.TotalMovementRange, Is.EqualTo(new int[] { 1 }));
+                Assert.That(moveSet.HorizontalMoveLimit.IncrementalMovementRange, Is.EqualTo(new int[] { 0 }));
+                Assert.That(moveSet.HorizontalMoveLimit.DecrementalMovementRange, Is.EqualTo(new int[] { 0 }));
                 Assert.That(moveSet.HorizontalMoveLimit.CanCapture, Is.False);
-                Assert.That(moveSet.HorizontalMoveLimit.CanCombineWithOtherDimensions, Is.False);
+                Assert.That(moveSet.HorizontalMoveLimit.CanCombineMoveLimits, Is.False);
             });
         }
     }
