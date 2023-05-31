@@ -4,9 +4,11 @@ namespace AmazingChess.GameMenu
 {
     public class ConsoleChessGameInterface : IChessGameInterface
     {
-        public ConsoleChessGameInterface()
-        {
+        private readonly IConsoleInterface _consoleInterface;
         
+        public ConsoleChessGameInterface(IConsoleInterface consoleInterface)
+        {
+            _consoleInterface = consoleInterface;
         }
 
         public void RenderMenu()
@@ -21,10 +23,10 @@ namespace AmazingChess.GameMenu
             var userMenuChoice = "";
             while (!menuChoiceObtained)
             {
-                userMenuChoice = Console.ReadLine() ?? "";
+                userMenuChoice = _consoleInterface.ReadLine() ?? "";
                 if (!IsValidMenuChoice(userMenuChoice))
                 {
-                    Console.WriteLine($"{userMenuChoice}" + ConsoleChessGameMenuResponses.WrongOptionMessage);
+                    _consoleInterface.WriteLine($"{userMenuChoice}" + ConsoleChessGameMenuResponses.WrongOptionMessage);
                     continue;
                 }
 
