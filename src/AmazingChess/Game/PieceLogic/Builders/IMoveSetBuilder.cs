@@ -1,6 +1,6 @@
 ﻿namespace AmazingChess.Game.PieceLogic
 {
-    public interface IMoveLimitBuilder
+    public interface IMoveSetBuilder
     {
         MoveSet GetMoveSet();
         void BuildHorizontalMoveLimit();
