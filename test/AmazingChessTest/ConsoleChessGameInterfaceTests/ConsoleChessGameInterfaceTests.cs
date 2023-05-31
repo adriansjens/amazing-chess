@@ -2,7 +2,7 @@ using AmazingChess.GameInterface;
 using AmazingChess.GameInterface.Constants;
 using Moq;
 
-namespace AmazingChessTest
+namespace AmazingChessTest.ConsoleChessGameInterfaceTests
 {
     public class ConsoleChessGameInterfaceTests
     {
