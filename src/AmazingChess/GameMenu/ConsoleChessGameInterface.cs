@@ -13,7 +13,7 @@ namespace AmazingChess.GameMenu
 
         public void RenderMenu()
         {
-            throw new NotImplementedException();
+            _consoleInterface.WriteLine(ConsoleChessGameMenuResponses.StartupMessage);
         }
 
         public string GetMenuChoiceFromUser()
