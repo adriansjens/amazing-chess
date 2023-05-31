@@ -1,5 +1,5 @@
-using AmazingChess.GameMenu;
-using AmazingChess.GameMenu.Constants;
+using AmazingChess.GameInterface;
+using AmazingChess.GameInterface.Constants;
 using Moq;
 
 namespace AmazingChessTest

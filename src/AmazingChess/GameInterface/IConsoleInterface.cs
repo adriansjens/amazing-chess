@@ -1,4 +1,4 @@
-﻿namespace AmazingChess.GameMenu
+﻿namespace AmazingChess.GameInterface
 {
     public interface IConsoleInterface
     {

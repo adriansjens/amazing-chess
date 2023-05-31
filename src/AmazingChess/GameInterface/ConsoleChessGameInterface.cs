@@ -1,6 +1,6 @@
-﻿using AmazingChess.GameMenu.Constants;
+﻿using AmazingChess.GameInterface.Constants;
 
-namespace AmazingChess.GameMenu
+namespace AmazingChess.GameInterface
 {
     public class ConsoleChessGameInterface : IChessGameInterface
     {

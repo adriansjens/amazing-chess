@@ -1,4 +1,4 @@
-﻿namespace AmazingChess.GameMenu.Constants
+﻿namespace AmazingChess.GameInterface.Constants
 {
     public static class ConsoleChessGameMenuResponses
     {
