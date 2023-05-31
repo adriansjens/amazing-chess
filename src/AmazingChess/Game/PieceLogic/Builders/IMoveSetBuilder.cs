@@ -3,6 +3,7 @@
     public interface IMoveSetBuilder
     {
         MoveSet GetMoveSet();
+        void SetTotalMovementRange();
         void BuildHorizontalMoveLimit();
         void BuildVerticalMoveLimit();
         void BuildDiagonalMoveLimit();

@@ -20,11 +20,17 @@ namespace AmazingChess.Game.PieceLogic
             _moveSet = new MoveSet();
         }
 
+        public void SetTotalMovementRange()
+        {
+            _moveSet.TotalMovementRange = new[] { 4 };
+        }
+
         public void BuildDiagonalMoveLimit()
         {
             _moveSet.DiagonalMoveLimit = new MoveLimit
             {
                 BoardDimension = BoardDimension.Diagonal,
+                CanCapture = false,
             };
 
         }
@@ -34,11 +40,9 @@ namespace AmazingChess.Game.PieceLogic
             _moveSet.HorizontalMoveLimit = new MoveLimit
             {
                 BoardDimension = BoardDimension.Horizontal,
-                UpperLimit = 2,
-                LowerLimit = 1,
-                IncrementalMoveLimit = 2,
-                DecrementalMoveLimit = 2,
-                CanCombineWithOtherDimensions = true
+                DecrementalMovementRange = new[] { 1, 3 },
+                IncrementalMovementRange = new[] { 1, 3 },
+                CanCombineMoveLimits = true
             };
         }
 
@@ -47,11 +51,9 @@ namespace AmazingChess.Game.PieceLogic
             _moveSet.VerticalMoveLimit = new MoveLimit
             {
                 BoardDimension = BoardDimension.Vertical,
-                UpperLimit = 2,
-                LowerLimit = 1,
-                IncrementalMoveLimit = 2,
-                DecrementalMoveLimit = 2,
-                CanCombineWithOtherDimensions = true
+                DecrementalMovementRange = new[] { 1, 3 },
+                IncrementalMovementRange = new[] { 1, 3 },
+                CanCombineMoveLimits = true
             };
         }
     }

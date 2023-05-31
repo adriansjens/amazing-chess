@@ -6,6 +6,8 @@ namespace AmazingChess.Game.PieceLogic
     {
         private MoveSet _moveSet = new();
 
+        private readonly int[] _fullMovementRange = new[] { 1, 2, 3, 4, 5, 6, 7 };
+
         public MoveSet GetMoveSet()
         {
             var result = _moveSet;
@@ -20,6 +22,12 @@ namespace AmazingChess.Game.PieceLogic
             _moveSet = new MoveSet();
         }
 
+        public void SetTotalMovementRange()
+        {
+            _moveSet.TotalMovementRange = _fullMovementRange;
+        }
+
+
         public void BuildDiagonalMoveLimit()
         {
             _moveSet.DiagonalMoveLimit = new MoveLimit
@@ -30,25 +38,21 @@ namespace AmazingChess.Game.PieceLogic
 
         public void BuildHorizontalMoveLimit()
         {
-            _moveSet.HorizontalMoveLimit = new MoveLimit
+            _moveSet.DiagonalMoveLimit = new MoveLimit
             {
                 BoardDimension = BoardDimension.Horizontal,
-                UpperLimit = 8,
-                LowerLimit = 8,
-                IncrementalMoveLimit = 8,
-                DecrementalMoveLimit = 8,
+                IncrementalMovementRange = _fullMovementRange,
+                DecrementalMovementRange = _fullMovementRange,
             };
         }
 
         public void BuildVerticalMoveLimit()
         {
-            _moveSet.VerticalMoveLimit = new MoveLimit
+            _moveSet.DiagonalMoveLimit = new MoveLimit
             {
                 BoardDimension = BoardDimension.Vertical,
-                UpperLimit = 8,
-                LowerLimit = 8,
-                IncrementalMoveLimit = 8,
-                DecrementalMoveLimit = 8,
+                IncrementalMovementRange = _fullMovementRange,
+                DecrementalMovementRange = _fullMovementRange,
             };
         }
     }

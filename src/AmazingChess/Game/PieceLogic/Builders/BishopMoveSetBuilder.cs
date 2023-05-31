@@ -20,15 +20,20 @@ namespace AmazingChess.Game.PieceLogic
             _moveSet = new MoveSet();
         }
 
+        public void SetTotalMovementRange()
+        {
+            _moveSet.TotalMovementRange = new[] { 1, 2, 3, 4, 5, 6, 7 };
+        }
+
         public void BuildDiagonalMoveLimit()
         {
+            var fullMovementRange = new[] { 1, 2, 3, 4, 5, 6, 7 };
+
             _moveSet.DiagonalMoveLimit = new MoveLimit
             {
                 BoardDimension = BoardDimension.Diagonal,
-                UpperLimit = 8,
-                LowerLimit = 1,
-                IncrementalMoveLimit = 8,
-                DecrementalMoveLimit = 8,
+                IncrementalMovementRange = fullMovementRange,
+                DecrementalMovementRange = fullMovementRange,
             };
         }
 
