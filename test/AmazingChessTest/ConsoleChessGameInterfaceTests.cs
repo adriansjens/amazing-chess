@@ -57,7 +57,7 @@ namespace AmazingChessTest
             var result = gameInterface.GetMenuChoiceFromUser();
 
             //Assert
-            mockConsoleInterface.Verify(x => x.WriteLine("0" + ConsoleChessGameMenuResponses.WrongOptionMessage));
+            mockConsoleInterface.Verify(mockInterface => mockInterface.WriteLine("0" + ConsoleChessGameMenuResponses.WrongOptionMessage));
         }
     }
 }
