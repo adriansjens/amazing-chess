@@ -38,6 +38,7 @@ namespace AmazingChess.Game.PieceLogic
             _moveSet.HorizontalMoveLimit = new MoveLimit
             {
                 BoardDimension = BoardDimension.Horizontal,
+                CanCapture = false
             };
         }
 
