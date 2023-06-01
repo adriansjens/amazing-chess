@@ -6,10 +6,10 @@ namespace AmazingChess.Game
 {
     public class Board
     {
-        private readonly ChessPieceFactory _factory;
+        private readonly IChessPieceFactory _factory;
         private readonly List<Square> _squares = new();
 
-        public Board(ChessPieceFactory factory)
+        public Board(IChessPieceFactory factory)
         {
             _factory = factory;
         }

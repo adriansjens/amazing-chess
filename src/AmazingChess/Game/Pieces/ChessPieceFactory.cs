@@ -5,7 +5,7 @@ using AmazingChess.Game.PieceLogic;
 
 namespace AmazingChess.Game.Pieces
 {
-    public class ChessPieceFactory
+    public class ChessPieceFactory : IChessPieceFactory
     {
         private readonly Dictionary<PieceName, IMoveSetBuilder> _moveSetBuilders;
         private readonly List<DefaultSquarePieceMapping> _squareToPieceMappings;
