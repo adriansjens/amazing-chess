@@ -1,4 +1,6 @@
-﻿namespace AmazingChess.Game.Constants
+﻿using AmazingChess.Game.Models;
+
+namespace AmazingChess.Game.Constants
 {
     public static class UnicodeCharacters
     {
@@ -79,10 +81,5 @@
         };
     }
 
-    public class UnicodeMapping
-    {
-        public ChessColor Color { get; set; }
-        public PieceName PieceName { get; set; }
-        public string UnicodeCharacter { get; set; }
-    }
+
 }
