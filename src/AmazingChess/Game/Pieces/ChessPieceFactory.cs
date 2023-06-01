@@ -1,5 +1,6 @@
 ﻿using AmazingChess.Game.ChessPieceLogic;
 using AmazingChess.Game.Constants;
+using AmazingChess.Game.Models;
 using AmazingChess.Game.PieceLogic;
 
 namespace AmazingChess.Game.Pieces
@@ -7,26 +8,23 @@ namespace AmazingChess.Game.Pieces
     public class ChessPieceFactory
     {
         private readonly Dictionary<PieceName, IMoveSetBuilder> _moveSetBuilders;
-        private readonly Dictionary<string, PieceName?> _squareToPieceMappings;
-        private readonly Dictionary<string, ChessColor> _squareToPieceColorMappings;
+        private readonly List<DefaultSquarePieceMapping> _squareToPieceMappings;
 
-        public ChessPieceFactory(Dictionary<PieceName, IMoveSetBuilder> moveSetBuilders,
-            Dictionary<string, PieceName?> squareToPieceMappings, Dictionary<string, ChessColor> squareToPieceColorMappings)
+        public ChessPieceFactory(Dictionary<PieceName, IMoveSetBuilder> moveSetBuilders, List<DefaultSquarePieceMapping> squareToPieceMappings)
         {
             _moveSetBuilders = moveSetBuilders;
             _squareToPieceMappings = squareToPieceMappings;
-            _squareToPieceColorMappings = squareToPieceColorMappings;
         }
 
         public IChessPiece? GetChessPieceForSquare(string squareDesignation)
         {
-            var chessPieceName = _squareToPieceMappings.FirstOrDefault(keyValuePair => keyValuePair.Key == squareDesignation).Value;
-            if (chessPieceName == null) return null;
+            var squareToPieceMapping = _squareToPieceMappings.FirstOrDefault(mappingObject => mappingObject.SquareDesignation == squareDesignation);
+            if (squareToPieceMapping == null) return null;
 
-            var colorOfPiece = _squareToPieceColorMappings.FirstOrDefault(keyValuePair => keyValuePair.Key == squareDesignation).Value;
-            if (colorOfPiece == 0) throw new Exception($"color for piece at square designation {squareDesignation} is not mapped correctly");
+            if (squareToPieceMapping.PieceName == null || squareToPieceMapping.ChessColor == null) 
+                throw new Exception($"square to piece mapping for piece at square designation {squareDesignation} is not mapped correctly");
 
-            return CreateChessPiece(chessPieceName.Value, colorOfPiece);
+            return CreateChessPiece(squareToPieceMapping.PieceName.Value, squareToPieceMapping.ChessColor.Value);
         }
 
         private IChessPiece CreateChessPiece(PieceName pieceName, ChessColor color)
